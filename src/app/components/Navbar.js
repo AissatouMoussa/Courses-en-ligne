@@ -17,7 +17,7 @@ export const Navbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div className="collapse navbar-collapse" id="navbarSupportContent">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <div className="ml-auto cart">
           <div>
             <from className="search form-inline my-2 my-lg-0">
@@ -25,7 +25,7 @@ export const Navbar = () => {
                 className="from-control mr-sm-2"
                 type="search"
                 placeholder="search"
-                aria-label="search" />
+                aria-label="search"/>
             </from>
           </div>
           <div className="menu-right">
