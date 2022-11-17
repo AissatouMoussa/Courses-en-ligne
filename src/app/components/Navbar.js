@@ -86,7 +86,7 @@ console.log(fruits)
     <div className="col-sm">
       <div className="row">
 
-        {fruits.map(fruit => <Card fruit={fruit}/>)}
+        {fruits.map(fruit => <Card key={fruit.ref} fruit={fruit}/>)}
       </div>
     </div>
   );

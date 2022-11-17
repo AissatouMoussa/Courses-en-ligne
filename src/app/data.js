@@ -101,7 +101,7 @@ const legumes = [
 {
     ref: "legumes_4",
     category: 1,
-    name: "Tomato",
+    name: "Tomates",
     price: 3.99,
     unit: "kg",
     image: "tomato.png"

@@ -5,11 +5,14 @@ import { list } from "./data"
 
 const SideMenu = () => {
   const links = ["Légumes", "Fruits", "Produits frais", "Epicerie", "Boissons"]
+  const loadCategory = i =>{
+    console.log(i)
+  }
   return (
     <div className="col-sm-2 sidebar">
       <ul>
-        {links.map(link => {
-          return (<li>{link}</li>)
+        {links.map((link, index) => {
+          return (<li key={index} onClick = {() => loadCategory(index)}>{link}</li>)
         })}
       </ul>
     </div>
