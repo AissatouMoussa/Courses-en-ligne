@@ -1,18 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Navbar, List } from "./components/Navbar"
 import "./styles/App.css"
 import { list } from "./data"
 
-const SideMenu = () => {
-  const links = ["Légumes", "Fruits", "Produits frais", "Epicerie", "Boissons"]
-  const loadCategory = i =>{
-    console.log(i)
-  }
+const SideMenu = ({ loadCategory, category }) => {
+  const links = ["Fruits", "Légumes", "Produits frais", "Epicerie", "Boissons"]
+
   return (
     <div className="col-sm-2 sidebar">
       <ul>
         {links.map((link, index) => {
-          return (<li key={index} onClick = {() => loadCategory(index)}>{link}</li>)
+          return (<li className={category === index && 'active'} key={index} onClick={() => loadCategory(index)}>{link}</li>)
         })}
       </ul>
     </div>
@@ -20,16 +18,34 @@ const SideMenu = () => {
 };
 
 const App = () => {
+  const [category, setCategory] = useState(0)
+  const [filtered, setFiltered] = useState(false)
+  const [isFiltering, setFiltering] = useState(false)
+  const loadCategory = i => {
+    setCategory(i)
+  }
+  const filterResults = input => {
+    let fullList = list.flat()
+    let results = fullList.filter(item => {
+      const name = item.name.toLowerCase()
+      const term = input.toLowerCase()
+      return name.indexOf(term) > -1
+    })
+    setFiltered(results)
+  }
+
+  useEffect(() => {
+    console.log(isFiltering)
+  })
   return (
     <Fragment>
-      < Navbar />
+      < Navbar filter={filterResults} setFiltering={setFiltering} />
       <div className="containre">
         <div className="row">
-          <SideMenu />
+          <SideMenu loadCategory={loadCategory} category={category} />
           <div className="col-sm">
             <div className="row">
-              <List data={list} />
-          
+              <List data={isFiltering ? filtered : list[category]} category={category} />
             </div>
           </div>
         </div>
