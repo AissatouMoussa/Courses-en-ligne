@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Navbar, List } from "./components/Navbar"
-import "./styles/App.css"
-import { list } from "./data"
+import { Navbar, List } from "../components/Navbar"
+import "../styles/App.css"
+import { list } from "../data"
 
 const SideMenu = ({ loadCategory, category }) => {
   const links = ["Fruits", "Légumes", "Produits frais", "Epicerie", "Boissons"]
@@ -21,6 +21,7 @@ const App = () => {
   const [category, setCategory] = useState(0)
   const [filtered, setFiltered] = useState(false)
   const [isFiltering, setFiltering] = useState(false)
+  const [count, setCount] = useState(1);
   const loadCategory = i => {
     setCategory(i)
   }
@@ -39,13 +40,14 @@ const App = () => {
   })
   return (
     <Fragment>
-      < Navbar filter={filterResults} setFiltering={setFiltering} />
+      < Navbar filter={filterResults} setFiltering={setFiltering} count={count} />
       <div className="containre">
         <div className="row">
           <SideMenu loadCategory={loadCategory} category={category} />
           <div className="col-sm">
             <div className="row">
-              <List data={isFiltering ? filtered : list[category]} category={category} />
+              <List data={isFiltering ? filtered : list[category]}
+                category={category} ajouterAuPanier={setCount} count={count} />
             </div>
           </div>
         </div>
