@@ -1,21 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Navbar, List } from "../components/Navbar"
+import { Navbar } from "../components/Navbar"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Cart } from './Cart'
+import { Home } from './Home'
 import "../styles/App.css"
 import { list } from "../data"
 
-const SideMenu = ({ loadCategory, category }) => {
-  const links = ["Fruits", "Légumes", "Produits frais", "Epicerie", "Boissons"]
-
-  return (
-    <div className="col-sm-2 sidebar">
-      <ul>
-        {links.map((link, index) => {
-          return (<li className={category === index && 'active'} key={index} onClick={() => loadCategory(index)}>{link}</li>)
-        })}
-      </ul>
-    </div>
-  );
-};
 
 const App = () => {
   const [category, setCategory] = useState(0)
@@ -40,18 +30,22 @@ const App = () => {
   })
   return (
     <Fragment>
-      < Navbar filter={filterResults} setFiltering={setFiltering} count={count} />
-      <div className="containre">
-        <div className="row">
-          <SideMenu loadCategory={loadCategory} category={category} />
-          <div className="col-sm">
-            <div className="row">
-              <List data={isFiltering ? filtered : list[category]}
-                category={category} ajouterAuPanier={setCount} count={count} />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Router>
+        < Navbar filter={filterResults} setFiltering={setFiltering} count={count} />
+
+        {/*Routes*/}
+        <Routes>
+        <Route exact path="/" Component= {() => <Home
+            category={category}
+            loadCategory={loadCategory}
+            ajouterAuPanier={setCount}
+            list={list}
+            isFiltering={isFiltering}
+            filtered={filtered}
+            count={count} />} />
+          <Route path="/cart" component={Cart} />
+        </Routes>
+      </Router>
     </Fragment>
   );
 }
