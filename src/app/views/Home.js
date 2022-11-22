@@ -3,7 +3,6 @@ import { List } from "../components/Navbar"
 
 const SideMenu = ({ loadCategory, category }) => {
     const links = ["Fruits", "Légumes", "Produits frais", "Epicerie", "Boissons"]
-  
     return (
       <div className="col-sm-2 sidebar">
         <ul>
@@ -13,18 +12,18 @@ const SideMenu = ({ loadCategory, category }) => {
           })}
         </ul>
       </div>
-    );
-  };
+    )
+  }
 
 export const Home = props => {
-    const {isFiltering, filtered, list, category, ajouterAuPanier, count, loadCategory}= props
-    return (<div className="containre">
+    const { isFiltering, filtered, list, category, ajouterAuPanier, count, loadCategory } = props
+    return ( <div className="container">
     <div className="row">
-      <SideMenu loadCategory={loadCategory} category={category} />
+      <SideMenu loadCategory={loadCategory} category={category}/>
       <div className="col-sm">
         <div className="row">
           <List data={isFiltering ? filtered : list[category]}
-            category={category} ajouterAuPanier={ajouterAuPanier} count={count} />
+            category={category} ajouterAuPanier={ajouterAuPanier} count={count}/>
         </div>
       </div>
     </div>

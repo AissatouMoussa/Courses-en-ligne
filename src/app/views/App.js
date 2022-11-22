@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Cart } from './Cart'
 import { Home } from './Home'
 import "../styles/App.css"
@@ -35,7 +35,7 @@ const App = () => {
 
         {/*Routes*/}
         <Routes>
-        <Route exact path="/" Component= {() => <Home
+          <Route exact path="/" element={<Home
             category={category}
             loadCategory={loadCategory}
             ajouterAuPanier={setCount}
@@ -43,7 +43,7 @@ const App = () => {
             isFiltering={isFiltering}
             filtered={filtered}
             count={count} />} />
-          <Route path="/cart" component={Cart} />
+          <Route path="/cart" element={<Cart /> } />
         </Routes>
       </Router>
     </Fragment>
