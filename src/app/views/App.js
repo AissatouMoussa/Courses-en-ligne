@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Cart } from './Cart'
+import { CartPage } from './Cart'
 import { Home } from './Home'
 import "../styles/App.css"
 import { list } from "../data"
@@ -43,7 +43,7 @@ const App = () => {
             isFiltering={isFiltering}
             filtered={filtered}
             count={count} />} />
-          <Route path="/cart" element={<Cart /> } />
+          <Route path="/cart" element={<CartPage /> } />
         </Routes>
       </Router>
     </Fragment>
