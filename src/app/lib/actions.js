@@ -1,31 +1,36 @@
 
+
+/*
+* types d'actions
+*/
 export const actions = {
-    ADD_TO_CART : "ADD_TO_CART",
-    UPDATE_CART : "UPDATE_CART",
-    REMOVE_FROM_CART : "REMOVE_FROM_CART"
+    AJOUTER_AU_PANIER: "AJOUTER_AU_PANIER",
+    MISE_A_JOUR_PANIER: "MISE_A_JOUR_PANIER",
+    RETIRER_DU_PANIER: "RETIRER_DU_PANIER"
 }
 
 /*
 *actions créées
 */
-const uid = () => Math.rendom().toString(34).slice(2)
-export function addtoCart(item, quantity) {
+const uid = () => Math.random().toString(34).slice(2)
+export function ajouteraupanier(item, quantity) {
     return {
-        type: actions.ADD_TO_CART,
+
+        type: actions.AJOUTER_AU_PANIER,
         payload: { id: uid(), quantity: quantity, details: item }
     }
 }
 
-export function updateCart(item, quantity) {
+export function miseajourpanier(item, quantity) {
     return {
-        type: actions.UPDATE_CART,
+        type: actions.MISE_A_JOUR_PANIER,
         payload: { item: item, quantity }
     }
 }
 
-export function removeFromCart(item) {
+export function retirerdupanier(item) {
     return {
-        type: actions.REMOVE_FROM_CART,
+        type: actions.RETIRER_DU_PANIER,
         payload: item
     }
 }

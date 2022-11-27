@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import "../styles/App.css";
 
 const Row = () => {
@@ -93,7 +92,7 @@ export const CartPage = () => {
                         <button type="button"
                             className="btn btn-light btn-lg btn-block checkout bg-crimson"
                             disabled="true">
-                            <a href="#" className="white">
+                            <a href=" #" className="white">
                                 Checkout
                             </a>
                         </button>
